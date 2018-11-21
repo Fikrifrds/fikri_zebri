@@ -10,8 +10,10 @@
 <meta name="description" id="description" content="Undangan Pernikahan Fikri & Zebri, Sidoarjo, 2 Desember 2018." />
 <!-- Favicon -->
 <link rel="shortcut icon" href="pics/favicon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.0/sweetalert2.min.css">
 <script type="text/javascript" src="./extras/jquery.min.1.7.js"></script>
 <script type="text/javascript" src="./extras/modernizr.2.5.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.0/sweetalert2.min.js"></script>
 <script type="text/javascript" src="./lib/hash.js"></script>
 
 </head>
@@ -453,5 +455,43 @@ yepnope({
 
 </script>
 
+</script>
+
+<script>
+	function jsUcfirst(string) 
+	{
+		return string.charAt(0).toUpperCase() + string.slice(1);
+	}
+	let urlParams = new URLSearchParams(window.location.search);
+	let arr = urlParams.get('name').split('-');
+	let myParam
+	if (arr.length === 1){
+		myParam = jsUcfirst(arr[0])
+	} else if(arr.length === 2){
+		myParam = jsUcfirst(arr[0]) + ' ' +jsUcfirst(arr[1])
+	} else if(arr.length === 3){
+		myParam = jsUcfirst(arr[0]) + ' ' +jsUcfirst(arr[1]) + ' ' +jsUcfirst(arr[2])
+	} else if(arr.length === 4){
+		myParam = jsUcfirst(arr[0]) + ' ' +jsUcfirst(arr[1]) + ' ' +jsUcfirst(arr[2]) + ' ' + jsUcfirst(arr[3])
+	}
+
+	if(myParam){
+	swal({
+		title: `<strong><h4>${myParam},</h4></strong>`,
+		width: 700,
+		html:
+			`<p class="lead">Fikri & Zebri mengundangmu di pernikahan mereka!<p>
+			<p>Tanggal<br/>2 Desember 2018</p><br>
+			<p>Pukul<br/>14.00 - 17.00 WIB</p><br>
+			Tempat<br/>Jl. Bangau 56A<br/>Pabean, Sedati-Sidoarjo<br/>
+			<img width="500px" class="img-responsive" src="pics/flower-bottom.png" />
+			
+			`,
+		showCancelButton: false,
+		focusConfirm: false
+		
+	})
+	}
+</script>
 </body>
 </html>
